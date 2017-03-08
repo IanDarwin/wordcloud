@@ -41,7 +41,13 @@ public class WordCloud {
 					PolarBlendMode.BLUR);
 		wordCloud.setPadding(2);
 		wordCloud.setBackground(new CircleBackground(300));
-		wordCloud.setFontScalar(new SqrtFontScalar(5, 20));
+		/** FONT SIZE:
+		 * Since in my usage (a glorified TODO list) there is one occurrence of each word,
+		 * all words are the same size, and you have to manually tune the "upper" font size.
+		 * In my experience, "10, 20" works for lists of 100 or so words, but it probably
+		 * depends on your screen resolution and other system-dependent stuff.
+		 */
+		wordCloud.setFontScalar(new SqrtFontScalar(10, 20));
 		wordCloud.build(knownWords, unknownWords);
 		wordCloud.writeToFile("wordcloud.png");
     }

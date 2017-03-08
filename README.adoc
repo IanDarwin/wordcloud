@@ -1,3 +1,19 @@
 = wordcloud
 
 Creates a positive/negative circular tag cloud from two wordlists using Kenny Cason's kumo package
+
+== Usage
+
+The two input files are specified by the environment variables POSITIVE and NEGATIVE.
+Each should refer to the full path of the text file, e.g.
+`POSITIVE=~/myfiles/knownwords.txt`
+
+Use "_" inside the word lists to make phrases appear in the tag cloud.
+
+== Building
+
+See the note about the font scaler (which Cason calls "scalar") in my source code.
+
+Then do
+
+`mvn clean package assembly:single`
