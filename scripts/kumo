@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# really cheesy script, assumes you have already built the program with Maven
+
+V=1.8
+
+java -cp ~/.m2/repository/com/kennycason//kumo/${V}/kumo-${V}.jar com.kennycason.kumo.cli.KumoCli $*
