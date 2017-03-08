@@ -11,7 +11,7 @@ import com.kennycason.kumo.PolarBlendMode;
 import com.kennycason.kumo.PolarWordCloud;
 import com.kennycason.kumo.WordFrequency;
 import com.kennycason.kumo.bg.CircleBackground;
-import com.kennycason.kumo.font.scale.SqrtFontScalar;
+import com.kennycason.kumo.font.scale.LinearFontScalar;
 import com.kennycason.kumo.nlp.FrequencyAnalyzer;
 
 /**
@@ -43,11 +43,11 @@ public class WordCloud {
 		wordCloud.setBackground(new CircleBackground(300));
 		/** FONT SIZE:
 		 * Since in my usage (a glorified TODO list) there is one occurrence of each word,
-		 * all words are the same size, and you have to manually tune the "upper" font size.
-		 * In my experience, "10, 20" works for lists of 100 or so words, but it probably
+		 * all words are the same type size, and you have to manually tune the "upper" font size.
+		 * In my experience, "10, 15" works for lists of 100 or so words, but it probably
 		 * depends on your screen resolution and other system-dependent stuff.
 		 */
-		wordCloud.setFontScalar(new SqrtFontScalar(10, 20));
+		wordCloud.setFontScalar(new LinearFontScalar(10, 13));
 		wordCloud.build(knownWords, unknownWords);
 		wordCloud.writeToFile("wordcloud.png");
     }
