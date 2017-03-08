@@ -1,6 +1,7 @@
 = wordcloud
 
-Creates a positive/negative circular tag cloud from two wordlists using Kenny Cason's kumo package
+Creates a positive/negative circular tag cloud from two wordlists using (or perhaps abusing) Kenny Cason's excellent
+https://github.com/kennycason/kumo[kumo package].
 
 == Usage
 
