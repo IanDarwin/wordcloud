@@ -17,9 +17,12 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/com/kennycason/kumo/1.8/kumo-1.8.jar"/>
-	<classpathentry kind="var" path="M2_REPO/junit/junit/4.8.1/junit-4.8.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
