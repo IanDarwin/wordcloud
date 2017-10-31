@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.kennycason.kumo.CollisionMode;
 import com.kennycason.kumo.PolarBlendMode;
 import com.kennycason.kumo.PolarWordCloud;
@@ -24,6 +26,8 @@ import com.kennycason.kumo.nlp.FrequencyAnalyzer;
  * @author Ian Darwin, but most of the work is done by Kenny Cason's kumo package.
  */
 public class WordCloud {
+	
+	private final static Logger log = Logger.getLogger(WordCloud.class);
 
     public static void main( String[] args ) throws Exception {
         final FrequencyAnalyzer frequencyAnalyzer = new FrequencyAnalyzer();
@@ -31,10 +35,12 @@ public class WordCloud {
 		frequencyAnalyzer.setMinWordLength(2); // vi
 		frequencyAnalyzer.addNormalizer(s -> s.replace('_', ' '));
 
-		final List<WordFrequency> knownWords = 
+		final List<WordFrequency> positiveWords = 
 				frequencyAnalyzer.load(getInputStream("POSITIVE", "/positive.txt"));
-		final List<WordFrequency> unknownWords = 
+		final List<WordFrequency> negativeWords = 
 				frequencyAnalyzer.load(getInputStream("NEGATIVE", "/negative.txt"));
+		log.info("Read " + positiveWords.size() + " positive words and " + 
+				negativeWords.size() + " negative.");
 		final Dimension dimension = new Dimension(600, 600);
 		final PolarWordCloud wordCloud = 
 			new PolarWordCloud(dimension, CollisionMode.PIXEL_PERFECT, 
@@ -47,8 +53,8 @@ public class WordCloud {
 		 * In my experience, "10, 15" works for lists of 100 or so words, but it probably
 		 * depends on your screen resolution and other system-dependent stuff.
 		 */
-		wordCloud.setFontScalar(new LinearFontScalar(10, 13));
-		wordCloud.build(knownWords, unknownWords);
+		wordCloud.setFontScalar(new LinearFontScalar(10, 10));
+		wordCloud.build(positiveWords, negativeWords);
 		wordCloud.writeToFile("wordcloud.png");
     }
 
